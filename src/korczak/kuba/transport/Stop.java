@@ -12,9 +12,10 @@ public class Stop
 	private List<Vehicle> vehList;
 	private static long ID = 1;
 
-	public Stop(String name)
+	public Stop(String name, List<Vehicle> vehList)
 	{
 		this.name = name + "-" + ID++;
+		this.vehList = vehList;
 		this.isJunction = isJunction();
 	}
 
@@ -43,24 +44,31 @@ public class Stop
 	@Override
 	public String toString()
 	{
-		return name;
+		String show = name + " ";
+		show += (isJunction == true) ? "Is Junction = Yes" : "Is Juntion = No";
+		
+		return show;
 	}
 
 	public boolean isJunction()
 	{
 		int tramNumb = 0;
 		int busNumb = 0;
-		for (Vehicle vehicle : vehList)
+		if (vehList != null && !vehList.isEmpty())
 		{
-			if (vehicle.getClass() == Tram.class)
+			for (Vehicle vehicle : vehList)
 			{
-				tramNumb++;
-			} else
-			{
-				busNumb++;
+				if (vehicle.getClass() == Tram.class)
+				{
+					tramNumb++;
+				} else
+				{
+					busNumb++;
+				}
 			}
-		}
 		
+		}
+			
 		if (tramNumb != 0 && busNumb != 0)
 		{
 			return true;
@@ -69,5 +77,6 @@ public class Stop
 			return false;
 		}
 	}
+	
 
 }

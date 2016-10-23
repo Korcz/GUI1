@@ -15,7 +15,7 @@ public abstract class Vehicle
 	private boolean isAnArticulatedVehicle;
 	private int ageOfVehicle;
 	
-	private HashMap<Vehicle, Stop> lineTrans;
+	//private HashMap<Vehicle, Stop> lineTrans;
 	
 	
 
